@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #006766;
+            color: #FFFFFF;
+        }
+
+        .payment-container {
+            width: 450px;
+            height:300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .payment-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #34c759, #28a745, #22a845);
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top:40px;
+        }
+
+        .payment-button:hover {
+            background: linear-gradient(45deg, #28a745, #22a845, #1e8e3e);
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <h1 style="font-family:cursive;">Welcome to Payment</h1>
+    <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+        <li><a  href="#"><img src="{% static 'fur/images/pay.png' %}" height="80px" width="80px"></a></li>
+    </ul>
+    <form>
+        <h3 style="font-family:cursive;">{{customer.Name}}</h3>
+        <button type="submit"  style="font-family:cursive;" class="payment-button">Proceed to Payment</button>
+    </form>
+</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_PKSVp5WYBL0buc"
+    data-amount="{{pay_str}}"
+    data-currency="INR"
+    data-order_id="{{payment.order_id}}"
+    data-buttontext=""
+    data-name="Furniture"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="abc@gmail.com"
+    data-theme.color="#4badeb"
+ >
+
+</script>
+
+</body>
+</html>
